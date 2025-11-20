@@ -20,6 +20,7 @@ install() {
         PKGCMD="zypper in"
     elif cat /etc/os-release | grep -i 'arch linux' 1>/dev/null; then
         PKGCMD="pacman -S"
+        ${PKGCMD} kpackage
     elif cat /etc/os-release | grep -i 'gentoo' 1>/dev/null; then
         PKGCMD="emerge"
     else
@@ -51,7 +52,7 @@ EOF
     fi
     echo "done!"
     echo "Installing plasmoid..."
-    plasmapkg2 --install com.github.deloachcd.caffeine-minus
+    kpackagetool6 --install com.github.deloachcd.caffeine-minus
 }
 
 uninstall() {
